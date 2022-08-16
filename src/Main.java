@@ -34,8 +34,8 @@ public class Main {
 
         Map<Character, Integer> mapChar = new HashMap<>();
 
-        //удаление пробелов и знаков припенания
-        String lr = LOREMINPUT.replaceAll("[ -.,!?:;\'\"]", "");
+        //Удаление пробелов и знаков припенания
+        String lr = LOREMINPUT.replaceAll("[ \\p{Punct}]", "");
         //привидение к общему регистру (нижнему)
         lr = lr.toLowerCase();
 
@@ -51,13 +51,13 @@ public class Main {
             }
         }
 
+        //System.out.println(lr);
         //System.out.println(mapChar);
 
         int maxCount = maxCountChar(mapChar);
         int minCount = minCountChar(mapChar);
 
         //Поиск ключа (символа) по значению минимального (мксимального), вывод, если таких несколько
-
         System.out.print("Встречаются чаще всего: ");
         for (Map.Entry<Character, Integer> kv : mapChar.entrySet()){
             if (kv.getValue() == maxCount){
